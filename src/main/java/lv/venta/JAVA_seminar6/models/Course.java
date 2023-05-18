@@ -31,9 +31,8 @@ public class Course {
     @Max(value = 20)
     private int creditPoints;
 
-    //TODO add constructor later
-
+    @OneToOne
+    @JoinColumn(name = "Idp")
     private Professor professor;
-
 
 }
