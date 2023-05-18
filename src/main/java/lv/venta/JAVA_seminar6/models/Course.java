@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+
 @Table(name = "course_table") //table in DB
 @Entity
 @Getter
@@ -34,5 +36,8 @@ public class Course {
     @OneToOne
     @JoinColumn(name = "Idp")
     private Professor professor;
+
+    @OneToMany(mappedBy = "course")
+    private Collection<Grade> grades;
 
 }
