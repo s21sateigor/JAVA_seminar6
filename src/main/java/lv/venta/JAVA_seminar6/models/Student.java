@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+
 @Table(name = "student_table") //table in DB
 @Entity
 @Getter
@@ -33,6 +35,9 @@ public class Student {
     @Size(min = 3, max = 20)
     @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
     private String surname;
+
+    @OneToMany(mappedBy = "student")
+    private Collection<Grade> grades;
 
 
 }

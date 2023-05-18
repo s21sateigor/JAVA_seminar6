@@ -26,5 +26,10 @@ public class Grade {
     @Max(value = 10)
     private int gvalue;
 
+    @ManyToOne
+    @JoinColumn(name = "Ids")
+    private Student student;
+
+
     //TODO add constructor later
 }
