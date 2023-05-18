@@ -27,15 +27,16 @@ public class Professor {
     @Column(name = "Name") // H2 title
     @NotNull
     @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]", message = "Only Latin letters")
+    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
     private String name;
 
     @Column(name = "Surname") // H2 title
     @NotNull
     @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]", message = "Only Latin letters")
+    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
     private String surname;
 
+    @Column(name = "Degree")
     @NotNull
     private Degree degree;
 
