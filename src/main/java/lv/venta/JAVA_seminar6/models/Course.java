@@ -2,10 +2,7 @@ package lv.venta.JAVA_seminar6.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Collection;
 
@@ -14,6 +11,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Course {
 
     @Column(name = "Idc")
@@ -38,6 +36,7 @@ public class Course {
     private Professor professor;
 
     @OneToMany(mappedBy = "course")
+    @ToString.Exclude
     private Collection<Grade> grades;
 
     public Course(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String title, @Min(1) @Max(20) int creditPoints, Professor professor) {
