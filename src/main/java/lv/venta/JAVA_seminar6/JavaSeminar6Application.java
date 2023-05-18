@@ -15,37 +15,11 @@ public class JavaSeminar6Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JavaSeminar6Application.class, args);
+
+		//TODO create new branch and go to it
+		//TODO change linkage between Professor and Course to ManyToMany
+		//TODO create adding functions for both Collections
+		//TODO change testModel function to add 2 courses for Zagars and Smirnovs
 	}
 
-	@Bean
-	public CommandLineRunner testModel(IProfessorRepo professorRepo, IStudentRepo studentRepo, ICourseRepo courseRepo, IGradeRepo gradeRepo){
-
-
-		return new CommandLineRunner() {
-			@Override
-			public void run(String... args) throws Exception {
-				Professor p1 = new Professor("Juris", "Zagars", Degree.phd);
-				Professor p2 = new Professor("Dmitrijs", "Smirnovs", Degree.phd);
-				professorRepo.save(p1);
-				professorRepo.save(p2);
-
-				Student s1 = new Student("Janis", "Berzins");
-				Student s2 = new Student("Baiba", "Kalnina");
-				studentRepo.save(s1);
-				studentRepo.save(s2);
-
-				Course c1 = new Course("Haosa teorija", 4, p1);
-				Course c2 = new Course("Ekonomika", 2, p2);
-				courseRepo.save(c1);
-				courseRepo.save(c2);
-
-				gradeRepo.save(new Grade(10, s1, c1));
-				gradeRepo.save(new Grade(9, s2, c1));
-				gradeRepo.save(new Grade(8, s1, c2));
-				gradeRepo.save(new Grade(7, s2, c2));
-
-
-			}
-		};
-	}
 }

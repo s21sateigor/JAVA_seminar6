@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.Collection;
+
 @Table(name = "professor_table") //table in DB
 @Entity
 @Getter
@@ -40,9 +42,10 @@ public class Professor {
     @NotNull
     private Degree degree;
 
-    @OneToOne(mappedBy = "professor")
+    @ManyToMany
+    @JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
     @ToString.Exclude
-    private Course course;
+    private Collection<Course> courses;
 
     public Professor(String name, String surname, Degree degree){
         this.name = name;

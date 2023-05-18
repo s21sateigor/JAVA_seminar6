@@ -31,9 +31,9 @@ public class Course {
     @Max(value = 20)
     private int creditPoints;
 
-    @OneToOne
-    @JoinColumn(name = "Idp")
-    private Professor professor;
+    @ManyToMany(mappedBy = "courses")
+    @ToString.Exclude
+    private Collection<Professor> professor;
 
     @OneToMany(mappedBy = "course")
     @ToString.Exclude
