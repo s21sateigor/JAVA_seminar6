@@ -97,9 +97,7 @@ public class FilteringServiceImpl implements IFilteringService{
             for(Grade temp: filteredResults) {
                 sum += temp.getGvalue();
             }
-
             return sum/filteredResults.size();
-
         }
         else
         {

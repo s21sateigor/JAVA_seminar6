@@ -18,4 +18,25 @@ public class FilterController
         return  "all-students-page";
     }
 
+    //TODO add this for Professor
+    @GetMapping("/info/showAllProfessors")
+    public String getAllProfessorsFunc(Model model){
+        model.addAttribute("professors", filteringService.retrieveAllProfessors());
+        return  "all-professors-page";
+    }
+
+    //TODO add this for Grades
+    @GetMapping("/info/showAllGrades")
+    public String getAllGradesFunc(Model model){
+        model.addAttribute("grades", filteringService.retrieveAllGrades());
+        return  "all-grades-page";
+    }
+
+    //TODO add this for Courses
+    @GetMapping("/info/showAllCourses")
+    public String getAllCoursesFunc(Model model){
+        model.addAttribute("courses", filteringService.retrieveAllCourses());
+        return  "all-courses-page";
+    }
+
 }
