@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 
 import java.util.Collection;
 
@@ -14,9 +15,9 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Professor {
-
     @Column(name = "Idp")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +53,7 @@ public class Professor {
         this.surname = surname;
         this.degree = degree;
     }
+
 
 }
 

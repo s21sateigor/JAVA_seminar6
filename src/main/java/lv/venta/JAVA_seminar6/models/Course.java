@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Table(name = "course_table") //table in DB
@@ -11,6 +12,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class Course {
 
@@ -33,16 +35,29 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     @ToString.Exclude
-    private Collection<Professor> professor;
+    private Collection<Professor> professors = new ArrayList<>();
 
     @OneToMany(mappedBy = "course")
     @ToString.Exclude
     private Collection<Grade> grades;
 
-    public Course(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String title, @Min(1) @Max(20) int creditPoints, Professor professor) {
+    public Course(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String title, @Min(1) @Max(20) int creditPoints, ArrayList<Professor> professors) {
         this.title = title;
         this.creditPoints = creditPoints;
-        this.professor = professor;
+        this.professors = professors;
     }
 
+    public void addProfessor(Professor inputProfessor){
+        if(!professors.contains(inputProfessor)) {
+            professors.add(inputProfessor);
+        }
+    }
+
+    //TODO remove professor from the arraylist
+
+    public void removeProfessor(Professor inputProfessor){
+        if(professors.contains(inputProfessor)){
+            professors.remove(inputProfessor);
+        }
+    }
 }
