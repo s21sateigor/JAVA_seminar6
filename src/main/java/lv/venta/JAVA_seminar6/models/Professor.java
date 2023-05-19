@@ -41,8 +41,7 @@ public class Professor {
     @NotNull
     private Degree degree;
 
-    @ManyToMany
-    @JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
+    @ManyToMany(mappedBy = "professors")
     @ToString.Exclude
     private Collection<Course> courses = new ArrayList<>();
 

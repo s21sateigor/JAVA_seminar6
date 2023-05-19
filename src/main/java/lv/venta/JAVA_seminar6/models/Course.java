@@ -33,7 +33,8 @@ public class Course {
     @Max(value = 20)
     private int creditPoints;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany
+    @JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
     @ToString.Exclude
     private Collection<Professor> professors = new ArrayList<>();
 
