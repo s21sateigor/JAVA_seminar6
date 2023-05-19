@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;

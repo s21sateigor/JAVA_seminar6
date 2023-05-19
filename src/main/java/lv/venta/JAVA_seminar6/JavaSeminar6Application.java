@@ -66,6 +66,7 @@ public class JavaSeminar6Application {
 				gradeRepo.save(new Grade(7, s2, c2));
 
 
+
 			}
 		};
 	}
