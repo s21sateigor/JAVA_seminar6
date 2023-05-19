@@ -15,11 +15,11 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 public class Student {
-    @Column(name = "Idst")
+    @Column(name = "Ids")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private long idst;
+    private long ids;
 
     @Column(name = "Name") // H2 title
     @NotNull
