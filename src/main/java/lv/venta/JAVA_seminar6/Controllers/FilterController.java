@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class FilterController
@@ -37,6 +38,13 @@ public class FilterController
     public String getAllCoursesFunc(Model model){
         model.addAttribute("courses", filteringService.retrieveAllCourses());
         return  "all-courses-page";
+    }
+
+
+    @GetMapping("/filter/filterGradesByStudent/{id}")
+    public String getAllGradesByStudentFunc(@PathVariable("id") long id, Model model) throws Exception {
+        model.addAttribute("grades-by-student", filteringService.retrieveAllGradesByStudentId(id));
+        return "grades-by-student-page";
     }
 
 }
