@@ -17,25 +17,7 @@ import java.util.Collection;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Professor {
-    @Column(name = "Idp")
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Setter(value = AccessLevel.NONE)
-
-    private long idp;
-    @Column(name = "Name") // H2 title
-    @NotNull
-    @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
-    private String name;
-
-    @Column(name = "Surname") // H2 title
-    @NotNull
-    @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
-    private String surname;
-
+public class Professor extends Person{
     @Column(name = "Degree")
     @NotNull
     private Degree degree;
@@ -45,8 +27,7 @@ public class Professor {
     private Collection<Course> courses = new ArrayList<>();
 
     public Professor(String name, String surname, Degree degree){
-        this.name = name;
-        this.surname = surname;
+        super(name, surname);
         this.degree = degree;
     }
 
