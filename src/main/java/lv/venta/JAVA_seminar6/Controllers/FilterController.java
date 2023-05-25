@@ -42,9 +42,13 @@ public class FilterController
 
 
     @GetMapping("/filter/filterGradesByStudent/{id}")
-    public String getAllGradesByStudentFunc(@PathVariable("id") long id, Model model) throws Exception {
-        model.addAttribute("grades-by-student", filteringService.retrieveAllGradesByStudentId(id));
-        return "grades-by-student-page";
+    public String getAllGradesByStudentId(@PathVariable("id") long id, Model model) {
+        try{
+            model.addAttribute("grades", filteringService.retrieveAllGradesByStudentId(id));
+            return "all-grades-page";
+        } catch (Exception e){
+            model.addAttribute("msg", e.getMessage());
+            return "error-page";
+        }
     }
-
 }
