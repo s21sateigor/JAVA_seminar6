@@ -14,33 +14,14 @@ import java.util.Collection;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Student {
-    @Column(name = "Ids")
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Setter(value = AccessLevel.NONE)
-    private long ids;
-
-    @Column(name = "Name") // H2 title
-    @NotNull
-    @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
-    private String name;
-
-    @Column(name = "Surname") // H2 title
-    @NotNull
-    @Size(min = 3, max = 20)
-    @Pattern(regexp = "[A-Z]{1}[a-z]+", message = "Only Latin letters")
-    private String surname;
-
+public class Student extends Person {
     @OneToMany(mappedBy = "student")
     @ToString.Exclude
     private Collection<Grade> grades;
 
     public Student(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z]+") String name,
                    @NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z]+") String surname) {
-        this.name = name;
-        this.surname = surname;
+        super(name, surname);
     }
 
 }
