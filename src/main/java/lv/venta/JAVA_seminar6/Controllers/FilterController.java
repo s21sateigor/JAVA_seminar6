@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FilterController
@@ -43,9 +44,20 @@ public class FilterController
 
     @GetMapping("/filter/filterGradesByStudent/{id}")
     public String getAllGradesByStudentId(@PathVariable("id") long id, Model model) {
-        try{
+        try {
             model.addAttribute("grades", filteringService.retrieveAllGradesByStudentId(id));
             return "all-grades-page";
+        } catch (Exception e){
+            model.addAttribute("msg", e.getMessage());
+            return "error-page";
+        }
+    }
+
+    @GetMapping("/filter/filterCoursesByStudent")
+    public String getAllCoursesByStudentId(@RequestParam(name = "id") long id, Model model) {
+        try {
+            model.addAttribute("courses", filteringService.retrieveAllCoursesByStudentId(id));
+            return "all-courses-page";
         } catch (Exception e){
             model.addAttribute("msg", e.getMessage());
             return "error-page";
