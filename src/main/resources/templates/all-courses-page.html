@@ -9,10 +9,10 @@
         <td>
             <ul>
                 <li th:each="prof : ${temp.getProfessors()}">
-                    <span th:text="${prof.getName()}">Name</span>
+                    <span th:text="${prof.getName()}"></span>
                     <span
-                            th:text="${prof.getSurname()}">Name</span>
-                    <span th:text="${prof.getDegree()}">Name</span>
+                            th:text="${prof.getSurname()}"></span>
+                    <span th:text="${prof.getDegree()}"></span>
                 </li>
             </ul>
         </td>
