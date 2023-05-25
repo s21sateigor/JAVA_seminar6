@@ -23,7 +23,6 @@ public class JavaSeminar6Application {
 	@Bean
 	public CommandLineRunner testModel(IProfessorRepo professorRepo, IStudentRepo studentRepo, ICourseRepo courseRepo, IGradeRepo gradeRepo){
 
-
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {
